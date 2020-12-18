@@ -20,7 +20,7 @@ We recommend you to install Gammapy via conda. If you are not familiar with Gamm
 4 - Replace the `spectra.py` and `utils.py` in your folder for the ones that are in this repo in the folder Installation. The `spectra.py` contains the `DMAnnihilationModel` and `DMDatasetOnOff`, and `utils.py` contains `SigmaVEstimator`. 
 
 5 - To perform the first tests and to check if your installation works, execute the jupyter notebook `DarkMatterUseCaseSigmaVEstimator.ipynb`.
-**Note**: For the moment the notebook works for gammapy v0.17. You can either wotk on adapt the notebook to v0.18 or install v0.17, the steps to do that are the same. Any update on this subject will be provide by the corresponding issue.  
+**Note**: For the moment the notebook works for gammapy v0.17. You can either work on adapting the notebook to v0.18 or to install gammapy v0.17, the steps to do that are the same. Any update on this subject will be provide by the corresponding issue.  
 
 
 ## Notebooks to take into account
