@@ -6,6 +6,8 @@ Task list: https://docs.google.com/document/d/1d9CnTxpa384FKHirjk3OHzYNMG0no7EWq
 
 Main Task Force page: https://portal.cta-observatory.org/WG/PHYS/SitePages/DM%20Tools%20Task%20Force.aspx
 
+If you want to be a collaborator of this repo and contribute, contact Judit Pérez-Romero (judit.perez@uam.es).
+
 ## Installation
 1 - First you need to install the last stable version of Gammapy in your computer. For this, you need to follow the steps in https://docs.gammapy.org/0.18.2/install/index.html
 We recommend you to install Gammapy via conda. If you are not familiar with Gammapy, maybe it will be useful to you to download some of the tutorial notebooks and go through them. The developer version will in principle not be needed for working and testing this package.
@@ -18,6 +20,8 @@ We recommend you to install Gammapy via conda. If you are not familiar with Gamm
 4 - Replace the `spectra.py` and `utils.py` in your folder for the ones that are in this repo in the folder Installation. The `spectra.py` contains the `DMAnnihilationModel` and `DMDatasetOnOff`, and `utils.py` contains `SigmaVEstimator`. 
 
 5 - To perform the first tests and to check if your installation works, execute the jupyter notebook `DarkMatterUseCaseSigmaVEstimator.ipynb`.
+**Note**: For the moment the notebook works for gammapy v0.17. You can either wotk on adapt the notebook to v0.18 or install v0.17, the steps to do that are the same. Any update on this subject will be provide by the corresponding issue.  
+
 
 ## Notebooks to take into account
 - https://docs.gammapy.org/0.18.2/tutorials/simulate_3d.html
