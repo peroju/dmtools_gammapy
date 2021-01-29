@@ -15,9 +15,9 @@ We recommend you to install Gammapy via conda. If you are not familiar with Gamm
 2 - Second, you need to do a second installation of the last stable version of Gammapy in your computer, just follow again the same steps in the fisrt paragraph and when naming the conda environment, choose a different name so later you will be able to distinguish between the plain Gammapy enviroment and the one with the dm-module. 
 
 3 - Third, our dm-module is written as a part of of the `astro` package in the `Dark Matter` sub-package. You need to find in your second Gammapy installation this package, for this, follow this path:
-`/Users/your_home_user/opt/anaconda3/envs/name_second_installation/lib/python3.7/site-packages/gammapy/astro/darkmatter`
+`<your_path_to_anacodna>/anaconda3/envs/name_second_installation/lib/python3.7/site-packages/gammapy/astro/darkmatter`
 
-4 - Replace the `spectra.py` and `utils.py` in your folder for the ones that are in this repo in the folder Installation. The `spectra.py` contains the `DMAnnihilationModel` and `DMDatasetOnOff`, and `utils.py` contains `SigmaVEstimator`. 
+4 - Replace the `spectra.py` and `utils.py` in your folder for the ones that are in this repo in the folder `Installation`. The `spectra.py` contains the `DMAnnihilationModel` and `DMDatasetOnOff`, and `utils.py` contains `SigmaVEstimator`. 
 
 5 - To perform the first tests and to check if your installation works, execute the jupyter notebook `DarkMatterUseCaseSigmaVEstimator.ipynb`.
 **Note**: For the moment the notebook works for gammapy v0.17. You can either work on adapting the notebook to v0.18 or to install gammapy v0.17, the steps to do that are the same. Any update on this subject will be provide by the corresponding issue.  
