@@ -10,7 +10,7 @@ If you want to be a collaborator of this repo and contribute, contact Judit Pér
 
 ## Option 1: dm-module and SigmaVEstimator
 Available notebooks:
-- DarkMatterUseCaseSigmaVEstimator.ipynb
+- DarkMatterUseCaseSigmaVEstimator.ipynb (point-like case, DM annihilation, nuissance parameters)
 
 ### Installation
 1 - First you need to install the last stable version of Gammapy in your computer. For this, you need to follow the steps in https://docs.gammapy.org/0.18.2/install/index.html
@@ -29,9 +29,9 @@ We recommend you to install Gammapy via conda. If you are not familiar with Gamm
 ## Option 2: Gammapy with some addendums
 Available notebooks/scripts:
 - fluxpointestimator_dmspectra_serialized.ipynb
-- fluxpointestimator_dmannihilation.py
-- fluxpointestimator_dmdecay.py
-- Gammapy_DM_3DSim_Limits-ExtendedSource_notParallel.py
+- fluxpointestimator_dmannihilation.py (point-like case, DM annihilation)
+- fluxpointestimator_dmdecay.py (point-like case, DM decay)
+- Gammapy_DM_3DSim_Limits-ExtendedSource_notParallel.py (extended source, 3D analysis, DM annihilation)
 
 We strongly encourage you to use the python scripts if you intend to run more than 10 simulations, and use the notebooks as a safe test place.
 To run the python scripts:
