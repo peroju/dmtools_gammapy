@@ -8,7 +8,11 @@ Main Task Force page: https://portal.cta-observatory.org/WG/PHYS/SitePages/DM%20
 
 If you want to be a collaborator of this repo and contribute, contact Judit Pérez-Romero (judit.perez@uam.es).
 
-## Installation
+## Option 1: dm-module and SigmaVEstimator
+Available notebooks:
+- DarkMatterUseCaseSigmaVEstimator.ipynb
+
+### Installation
 1 - First you need to install the last stable version of Gammapy in your computer. For this, you need to follow the steps in https://docs.gammapy.org/0.18.2/install/index.html
 We recommend you to install Gammapy via conda. If you are not familiar with Gammapy, maybe it will be useful to you to download some of the tutorial notebooks and go through them. The developer version will in principle not be needed for working and testing this package.
 
@@ -20,10 +24,31 @@ We recommend you to install Gammapy via conda. If you are not familiar with Gamm
 4 - Replace the `spectra.py` and `utils.py` in your folder for the ones that are in this repo in the folder `Installation`. The `spectra.py` contains the `DMAnnihilationModel` and `DMDatasetOnOff`, and `utils.py` contains `SigmaVEstimator`. 
 
 5 - To perform the first tests and to check if your installation works, execute the jupyter notebook `DarkMatterUseCaseSigmaVEstimator.ipynb`.
-**Note**: For the moment the notebook works for gammapy v0.17. You can either work on adapting the notebook to v0.18 or to install gammapy v0.17, the steps to do that are the same. Any update on this subject will be provide by the corresponding issue.  
+**Note**: It should work for the latest version of Gammapy, if not, please contact us. 
+
+## Option 2: Gammapy with some addendums
+Available notebooks/scripts:
+- fluxpointestimator_dmspectra_serialized.ipynb
+- fluxpointestimator_dmannihilation.py
+- fluxpointestimator_dmdecay.py
+- Gammapy_DM_3DSim_Limits-ExtendedSource_notParallel.py
+
+We strongly encourage you to use the python scripts if you intend to run more than 10 simulations, and use the notebooks as a safe test place.
+To run the python scripts:
+- use the flag: -W ignore
+- BEFORE RUNNING IT: the parameters of the observation, the original spectrum, the numer of realizations, the masses and the channels are instantiated in the script, so please take a look to it to customize everything you may need.
+
+### Installation
+Just install gammapy as described in step 1) of Option 1.
+
+## Which option should I use?
+The dm-module and the SigmaVEstimator were the first DMTool based in Gammapy. It allows to look carefully to the likelihoods and also has implemented the J-factor uncertainty as a nuissance parameter. It should also work for the latest Gammapy version. However, it needs lot of testing still, since the estimator does not seem pretty stable until reaching O(1000), which usually is very computationally expensive. The notebook is also not up-to-date, so it doesn't take profit of the latest changes in Gammapy.
+The Gammapy with some addendums is the more recent path the DMTools has taken. It allows to perform a complete standard DM analysis all within Gammapy, just with some definitions (included in the code) that have to be instantiated every time you run it. It's completely stable, since it only make use of gammañy internal functionalities, and way more fast. We will work to add the j-factor uncertainty as a nuissance parameter. 
+
+So in conclusion, use the one you feel more confortable with, but the one that would keep in manteinance would be Option 2.
 
 
-## Notebooks to take into account
+## Gammapy tutorials/notebooks to take into account
 - https://docs.gammapy.org/0.18.2/tutorials/simulate_3d.html
 - https://docs.gammapy.org/0.18.2/tutorials/spectrum_analysis.html
 - https://docs.gammapy.org/0.18.2/tutorials/sed_fitting.html
