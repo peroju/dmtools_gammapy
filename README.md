@@ -42,7 +42,8 @@ To run the python scripts:
 Just install gammapy as described in step 1) of Option 1.
 
 ## Which option should I use?
-The Option 1 (dm-module and the SigmaVEstimator) was the first DMTool based in Gammapy. It allows to look carefully to the likelihoods and also has implemented the J-factor uncertainty as a nuissance parameter. It should also work for the latest Gammapy version. However, it needs lot of testing still, since the estimator does not seem pretty stable until reaching O(1000), which usually is very computationally expensive. The notebook is also not up-to-date, so it doesn't take profit of the latest changes in Gammapy.\\
+The Option 1 (dm-module and the SigmaVEstimator) was the first DMTool based in Gammapy. It allows to look carefully to the likelihoods and also has implemented the J-factor uncertainty as a nuissance parameter. It should also work for the latest Gammapy version. However, it needs lot of testing still, since the estimator does not seem pretty stable until reaching O(1000), which usually is very computationally expensive. The notebook is also not up-to-date, so it doesn't take profit of the latest changes in Gammapy.
+
 The Option 2 (Gammapy with some addendums) is the more recent path the DMTools has taken. It allows to perform a complete standard DM analysis all within Gammapy, just with some definitions (included in the code) that have to be instantiated every time you run it. It's completely stable, since it only make use of Gammapy internal functionalities, and way more fast. We will work to add the j-factor uncertainty as a nuissance parameter. 
 
 So in conclusion, use the one you feel more confortable with, but the one that would keep in manteinance would be Option 2.
