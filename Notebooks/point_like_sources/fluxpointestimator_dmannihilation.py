@@ -48,10 +48,11 @@ livetime = 300 * u.h
 l = 150.57
 b = -13.26
 
-pointing = SkyCoord(l, b, unit="deg", frame="galactic")
+target = SkyCoord(l, b, unit="deg", frame="galactic")
 offset = 1.0 * u.deg
 on_region_radius = Angle("1.0 deg")
-on_region = CircleSkyRegion(center=pointing, radius=on_region_radius)
+pointing = target.directional_offset_by(position_angle=0 * u.deg, separation=offset)
+on_region = CircleSkyRegion(center=target, radius=on_region_radius)
 
 # Energy axis in TeV
 emin = 30/1000
@@ -103,29 +104,27 @@ obs = Observation.create(pointing=pointing, livetime=livetime, irfs=irfs)
 print("Characteristics of the simulated observation")
 print(obs)
 
+
+# # Create the On/Off simulations
+
 # Make the SpectrumDataset
 # NOTE: Even we don't set different energy ranges for recovered and true energies, if edisp is not considered then the
 # FluxPointEstimator breaks
 dataset_empty = SpectrumDataset.create(e_reco=energy_axis, region=on_region, name="obs-0")
 maker = SpectrumDatasetMaker(selection=["exposure", "edisp", "background"])
-dataset = maker.run(dataset_empty, obs)
-
-# Set the model on the dataset, and fake the counts on the first one to create the rest from here
-dataset.models = model
-dataset.fake(random_state=42)
-
-
-# # Create the On/Off simulations
-
-# Set off regions
-dataset_on_off = SpectrumDatasetOnOff.from_spectrum_dataset(dataset=dataset, acceptance=1, acceptance_off=3)
 
 # Set the number of observations we want to create
-n_obs = 125
+n_obs = 50
 print("Creating the", n_obs, "On/Off simulations")
 
 datasets = Datasets()
 for idx in range(n_obs):
+    dataset = maker.run(dataset_empty, obs)
+    # Set the model on the dataset, and fake the counts
+    dataset.models = model
+    dataset.fake(random_state=idx)
+    # Set off regions
+    dataset_on_off = SpectrumDatasetOnOff.from_spectrum_dataset(dataset=dataset, acceptance=1, acceptance_off=3)
     dataset_on_off.fake(
         random_state=idx, npred_background=dataset.npred_background()
     )
@@ -181,7 +180,7 @@ fig_3.savefig('distr_counts.png', quality=95, dpi=1000)
 
 # Set list of channels and masses we want to fit
 channels = ["b", "tau", "W"]
-masses = [100, 250, 500, 750, 1000, 2500, 5000, 7500, 10000, 25000, 50000, 75000, 100000]
+masses = np.array([100, 250, 500, 750, 1000, 2500, 5000, 7500, 10000, 25000, 50000, 75000, 100000])
 
 results = dict(mean={}, runs={})
 
@@ -237,21 +236,23 @@ for ch in channels:
 
 # Gammapy has some troubles writing directly the table of the runs
 # if you want to save the data as txt file uncomment the next few lines of code
-# these results tables contain information about the likelihood and the fit, but not the complete likelihood profile
+# these results tables contain information about the likelihood profile and the fit
 #res = np.zeros([n_obs, 23])
+#x_stat_profile = np.zeros([n_obs, len(results["runs"]['b'][100][0][0][16])])
+#stat_profile = np.zeros([n_obs, len(results["runs"]['b'][100][0][0][17])])
 #for ch in channels:
 #    for m in masses:
 #        for i in range(n_obs):
 #            for j in range(23):
-#                # We ommit columns 16 and 17 cause they are list, from 17 we keep the first number corresponding approx
-#                # to -2ln(L(Hnull))
 #                if j==16:
-#                    res[i, j] = -90
+#                    x_stat_profile[i] = results["runs"][ch][m][i][0][j]
 #                elif j==17:
-#                    res[i, j] = results["runs"][ch][m][i][0][j][0]
+#                    stat_profile[i] = results["runs"][ch][m][i][0][j]
 #                else:
 #                    res[i, j] = results["runs"][ch][m][i][0][j]
 #        np.savetxt('results_{}_{}.txt'.format(ch, m), res, header='Columns corresponding to flux_points.table_formated in gammapy')
+#        np.savetxt('stat_profile_{}_{}.txt'.format(ch, m), stat_profile)
+#        np.savetxt('x_stat_profile_{}_{}.txt'.format(ch, m), x_stat_profile)
 
 # Arrange the data from the fits and save so we can plot it easily later
 sigmav = dict(ul={}, one_sigma={})
@@ -266,7 +267,6 @@ for ch in channels:
     np.savetxt('mean_sigmav_{}.txt'.format(ch), sigmav["ul"][ch])
     sigmav["one_sigma"][ch] = np.asarray(sigmav["one_sigma"][ch])
     np.savetxt('1sigma_sigmav_{}.txt'.format(ch), sigmav["one_sigma"][ch])
-masses = np.asarray(masses)
 
 
 # # Plot the constraints
