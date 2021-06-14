@@ -28,7 +28,6 @@ We recommend you to install Gammapy via conda. If you are not familiar with Gamm
 
 ## Option 2: Gammapy with some addendums
 Available notebooks/scripts:
-- fluxpointestimator_dmspectra_serialized.ipynb
 - fluxpointestimator_dmannihilation.py (point-like case, DM annihilation)
 - fluxpointestimator_dmdecay.py (point-like case, DM decay)
 - Gammapy_DM_3DSim_Limits-ExtendedSource_notParallel.py (extended source, 3D analysis, DM annihilation)
