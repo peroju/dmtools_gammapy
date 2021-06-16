@@ -49,7 +49,7 @@ The Option 2 (Gammapy with some addendums) is the more recent path the DMTools h
 So in conclusion, use the one you feel more confortable with, but the one that would keep in manteinance would be Option 2.
 
 
-## Gammapy tutorials/notebooks to take into account
+## Gammapy tutorials/notebooks/documentation to take into account
 - https://docs.gammapy.org/0.18.2/tutorials/simulate_3d.html
 - https://docs.gammapy.org/0.18.2/tutorials/spectrum_analysis.html
 - https://docs.gammapy.org/0.18.2/tutorials/sed_fitting.html
@@ -57,4 +57,7 @@ So in conclusion, use the one you feel more confortable with, but the one that w
 - https://docs.gammapy.org/0.18.2/tutorials/extended_source_spectral_analysis.html
 - https://docs.gammapy.org/0.18.2/tutorials/exclusion_mask.html
 - https://docs.gammapy.org/0.18.2/tutorials/maps.html
+- https://docs.gammapy.org/0.18.2/tutorials/modeling.html
+- https://docs.gammapy.org/0.18.2/makers/reflected.html
+- https://docs.gammapy.org/0.18.2/estimators/index.html
 
