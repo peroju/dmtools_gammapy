@@ -30,6 +30,7 @@ We recommend you to install Gammapy via conda. If you are not familiar with Gamm
 Available notebooks/scripts:
 - fluxpointestimator_dmannihilation.py (point-like case, DM annihilation)
 - fluxpointestimator_dmdecay.py (point-like case, DM decay)
+- reding_likelihoodprofile_files.ipynb, tau_vs_mass_comps.ipynb, sigma_vs_mass_comps.ipynb (reading varius output files)
 - Gammapy_DM_3DSim_Limits-ExtendedSource_notParallel.py (extended source, 3D analysis, DM annihilation)
 
 We strongly encourage you to use the python scripts if you intend to run more than 10 simulations, and use the notebooks as a safe test place.
